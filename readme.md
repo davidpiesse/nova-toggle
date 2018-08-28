@@ -12,6 +12,8 @@ composer require davidpiesse/nova-toggle
 ## Usage
 The Toggle has all the same options as the Boolean field so you can set the values to be stored in the Model.
 ```php
+use Davidpiesse\NovaToggle\Toggle;
+
 Toggle::make('Active')
     ->trueValue('On')
     ->falseValue('Off')
