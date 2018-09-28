@@ -28,9 +28,10 @@ Toggle::make('Active')
     ->showOnlyFalseLabel() //False label only
 ```
 
-To set the text you can use either or both of the following
+To set the text you can use either or both of the following. You must also set the visibility of the labels as described above.
 ```php
 Toggle::make('Active')
+    ->showLabels()
     ->trueLabel('Tru Dat')
     ->falseLabel('Nah Dawg')
 ```
