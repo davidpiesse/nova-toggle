@@ -5,7 +5,7 @@
                 class="inline-block rounded-full w-2 h-2 mr-1"
                 :class="{'bg-success': field.value, 'bg-danger': !field.value}"
             />
-            <span>{{ label }}</span>
+            <span v-if="label != null">{{ label }}</span>
         </p>
     </panel-item>
 </template>
@@ -15,8 +15,16 @@ export default {
     props: ['resource', 'resourceName', 'resourceId', 'field'],
 
     computed: {
+        trueLabel(){
+            return (this.field.true_label != undefined) ? this.field.true_label : null
+        },
+
+        falseLabel(){
+            return (this.field.false_label != undefined) ? this.field.false_label : null
+        },
+
         label() {
-            return this.field.value == true ? 'True' : 'False'
+            return this.field.value == true ? this.trueLabel : this.falseLabel
         },
     },
 }
