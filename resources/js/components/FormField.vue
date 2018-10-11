@@ -2,9 +2,10 @@
     <default-field :field="field">
         <template slot="field">
             <div class="py-2">
-                <toggle-button 
-                    :id="field.name"
-                    :name="field.name"
+                <toggle-button
+                    :id="sanitize"
+                    :name="sanitize"
+                    :dusk="sanitize"
                     :value="value"
                     @change="toggle"
                     :labels="labelConfig"
@@ -30,7 +31,6 @@ export default {
     data: () => ({
         value: false,
     }),
-
     mounted() {
         this.value = this.field.value || false
 
@@ -91,6 +91,10 @@ export default {
 
         speed(){
             return (this.field.speed != undefined) ? this.field.speed : 300
+        },
+
+        sanitize() {
+            return this.field.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/ /g, '-')
         },
     },
 }
