@@ -2,9 +2,9 @@
     <default-field :field="field">
         <template slot="field">
             <div class="py-2">
-                <toggle-button 
-                    :id="field.name"
-                    :name="field.name"
+                <toggle-button
+                    :id="field.name | sanitize"
+                    :name="field.name | sanitize"
                     :value="value"
                     @change="toggle"
                     :labels="labelConfig"
@@ -30,7 +30,11 @@ export default {
     data: () => ({
         value: false,
     }),
-
+    filters: {
+      sanitize: function (value) {
+            return value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/ /g, '-')
+        }
+    },
     mounted() {
         this.value = this.field.value || false
 
