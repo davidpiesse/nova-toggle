@@ -3,8 +3,8 @@
         <template slot="field">
             <div class="py-2">
                 <toggle-button
-                    :id="sanitize"
-                    :name="sanitize"
+                    :id="sanitizedName"
+                    :name="sanitizedName"
                     :value="value"
                     @change="toggle"
                     :labels="labelConfig"
@@ -93,8 +93,8 @@ export default {
             return (this.field.speed != undefined) ? this.field.speed : 300
         },
 
-        sanitize() {
-            return this.field.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/ /g, '-')
+        sanitizedName() {
+            return this.field.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")
         },
     },
 }
