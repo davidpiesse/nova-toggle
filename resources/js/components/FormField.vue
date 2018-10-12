@@ -94,7 +94,7 @@ export default {
         },
 
         sanitize() {
-            return this.field.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/ /g, '-')
+            return this.field.name.normalize('NFD').replace(/[\u0300-\u036f]/g, "")
         },
     },
 }
