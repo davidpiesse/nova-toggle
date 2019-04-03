@@ -1,7 +1,7 @@
 <template>
     <div class="text-center">
         <span
-            class="inline-block rounded-full w-2 h-2"
+            class="inline-block rounded-full w-24 h-24"
             :class="{'bg-success': field.value, 'bg-danger': !field.value}" />
         <span class="pl-2" v-if="label != null">{{ label }}</span>
     </div>
