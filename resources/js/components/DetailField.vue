@@ -2,7 +2,7 @@
     <panel-item :field="field">
         <p slot="value" class="text-90">
             <span
-                class="inline-block rounded-full w-2 h-2 mr-1"
+                class="inline-block rounded-full w-4 h-4 mr-1"
                 :class="{'bg-success': field.value, 'bg-danger': !field.value}"
             />
             <span v-if="label != null">{{ label }}</span>
