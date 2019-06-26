@@ -22,7 +22,11 @@ export default {
         },
 
         label() {
-            return this.field.value == true ? this.trueLabel : this.falseLabel
+            if(! this.field.hide_label_on_index) {
+                return this.field.value == true ? this.trueLabel : this.falseLabel
+            }else {
+                return null;
+            }
         },
     },
 }

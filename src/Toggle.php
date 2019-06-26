@@ -41,6 +41,12 @@ class Toggle extends Boolean
         ]);
     }
 
+    public function hideLabelOnIndex(){
+        return $this->withMeta([
+            'hide_label_on_index' => true,
+        ]);
+    }
+
     public function width($width){
         return $this->withMeta([
             'width' => $width,
