@@ -40,7 +40,7 @@ The defaults are 'True' and 'False'
 
 ### Size
 You can set the width and height. Setting the width will auto scale the height, but you can override this with ->height().
-Defaults are 60 (px) and 26 (px) 
+Defaults are 60 (px) and 26 (px)
 ```php
 Toggle::make('Active')
     ->width(80)
@@ -63,3 +63,16 @@ Toggle::make('Active')
     ->speed(500)
 ```
 The default is 300ms
+
+### Index Page
+You have a few options you can set to customise how your boolean values display on the index listing page.
+
+```php
+Toggle::make('Active')
+    ->hideTrueDotOnIndex()    // Will hide the colored dot for true entries
+    ->hideFalseDotOnIndex()   // Will hide the coloured fot for false entries
+    ->showBadgeOnIndex()      // Will show the label on the index as a badge
+    ->whiteBadgeText()        // Will make the badge use white text, rather than the default black text
+```
+
+
