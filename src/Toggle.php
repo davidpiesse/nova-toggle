@@ -47,6 +47,12 @@ class Toggle extends Boolean
         ]);
     }
 
+    public function editableIndex(){
+        return $this->withMeta([
+            'editable_index' => true,
+        ]);
+    }
+
     public function width($width){
         return $this->withMeta([
             'width' => $width,
@@ -71,6 +77,13 @@ class Toggle extends Boolean
             'false_color' => $colour,
         ]);
     }
+
+    //TODO
+    // public function textColor($colour){
+    //     return $this->withMeta([
+    //         'text_color' => $colour,
+    //     ]);
+    // }
 
     public function speed($ms){
         return $this->withMeta([

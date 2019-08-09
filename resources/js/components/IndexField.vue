@@ -1,9 +1,24 @@
 <template>
     <div class="text-center">
-        <span
+        <div v-if="editableIndex">
+            <toggle-button
+                    :id="sanitizedName"
+                    :name="sanitizedName"
+                    :value="value"
+                    @change="toggle"
+                    :labels="labelConfig"
+                    :width="width"
+                    :height="height"
+                    :sync="true"
+                    :color="colors"
+                    :speed="speed"
+                />
+        </div>
+        <span v-else
             class="inline-block rounded-full w-4 h-4"
-            :class="{'bg-success': field.value, 'bg-danger': !field.value}" />
-        <span class="pl-2" v-if="label != null">{{ label }}</span>
+            :style="bgColor" 
+            />
+        <span class="pl-2" v-if="label != null" >{{ label }}</span>
     </div>
 </template>
 
@@ -11,8 +26,28 @@
 export default {
     props: ['resourceName', 'field'],
 
-    computed: {
+    data: () => ({
+        value: false,
+    }),
 
+    mounted() {
+        this.value = this.field.value || false
+
+        this.field.fill = formData => {
+            formData.append(this.field.attribute, this.trueValue)
+        }
+    },
+
+    methods: {
+        toggle() {
+            this.value = !this.value
+        },
+    },
+
+    computed: {
+        editableIndex(){
+            return this.field.editable_index != undefined
+        },
         trueLabel(){
             return (this.field.true_label != undefined) ? this.field.true_label : null
         },
@@ -26,6 +61,26 @@ export default {
                 return this.field.value == true ? this.trueLabel : this.falseLabel
             }else {
                 return null;
+            }
+        },
+
+        trueColor(){
+            return (this.field.true_color != undefined) ? this.field.true_color : 'var(--success)'
+        },
+
+        falseColor(){
+            return (this.field.false_color != undefined) ? this.field.false_color : 'var(--danger)'
+        },
+
+        bgColor(){
+            return  'background-color:' + (this.field.value == true ? this.trueColor : this.falseColor) + ';'
+        },
+
+        colors(){
+            return {
+                checked: this.trueColor,
+                unchecked: this.falseColor,
+                disabled: '#CCCCCC'
             }
         },
     },
