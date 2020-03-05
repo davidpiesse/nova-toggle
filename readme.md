@@ -68,3 +68,11 @@ Toggle::make('Active')
     ->speed(500)
 ```
 The default is 300ms
+
+### Show an alert
+Enables an alert and waits for a confirmation before toggling.
+```php
+Toggle::make('Active')
+    ->showAlert('Are you sure?', '', 'Yes toggled it!')
+```
+The defaults are `$title = 'Are you sure?', $text = '', $proceedTitleButton = 'Yes toggled it!'`
