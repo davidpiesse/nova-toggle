@@ -1,12 +1,11 @@
 <template>
     <default-field :field="field">
         <template slot="field">
-            <div class="py-2">
+            <div @click="toggle" class="inline-block py-2">
                 <toggle-button
                     :id="sanitizedName"
                     :name="sanitizedName"
                     :value="value"
-                    @change="toggle"
                     :labels="labelConfig"
                     :width="width"
                     :height="height"
@@ -40,9 +39,27 @@ export default {
     },
 
     methods: {
-        toggle() {
-            this.value = !this.value
-        },
+      async toggle(event) {
+        event.preventDefault();
+
+        if (this.field.show_alert) {
+          const response = await this.$swal({
+            title: this.field.alert_title || 'Are you sure?',
+            text: this.field.alert_text,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: this.field.alert_proceed_title || 'Yes, toggle it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+          });
+
+          if (!response.value) {
+            return;
+          }
+        }
+
+        this.value = !this.value
+      },
     },
 
     computed: {
