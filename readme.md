@@ -68,3 +68,11 @@ Toggle::make('Active')
     ->speed(500)
 ```
 The default is 300ms
+
+
+### Toggle on index
+You can activate the toggle on index as well with
+```php
+Toggle::make('Active')
+    ->editableIndex()
+```

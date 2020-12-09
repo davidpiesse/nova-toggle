@@ -7,7 +7,7 @@ use Laravel\Nova\Fields\Boolean;
 class Toggle extends Boolean
 {
     public $component = 'nova-toggle';
-    
+
     public function trueLabel($label){
         return $this->withMeta([
             'true_label' => $label,
@@ -90,5 +90,5 @@ class Toggle extends Boolean
             'speed' => $ms,
         ]);
     }
-    
+
 }

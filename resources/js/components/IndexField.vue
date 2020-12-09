@@ -16,7 +16,7 @@
         </div>
         <span v-else
             class="inline-block rounded-full w-4 h-4"
-            :style="bgColor" 
+            :style="bgColor"
             />
         <span class="pl-2" v-if="label != null" >{{ label }}</span>
     </div>
@@ -32,19 +32,28 @@ export default {
 
     mounted() {
         this.value = this.field.value || false
-
-        this.field.fill = formData => {
-            formData.append(this.field.attribute, this.trueValue)
-        }
     },
 
     methods: {
         toggle() {
             this.value = !this.value
+            Nova.request().post('/nova-vendor/nova-toggle/toggle/' + this.resourceName, {
+              value: this.value,
+              fieldName: this.field.attribute,
+              resourceId: this.resourceId
+            }).then((res) => {
+              if(res.data.success)
+                this.$toasted.show(this.field.indexName + ' changed', {type: 'success'});
+              else
+                this.$toasted.show(this.field.indexName + ' change error', {type: 'error'});
+            })
         },
     },
 
     computed: {
+        resourceId() {
+          return this.$parent.resource.id.value;
+        },
         editableIndex(){
             return this.field.editable_index != undefined
         },
@@ -58,7 +67,7 @@ export default {
 
         label() {
             if(! this.field.hide_label_on_index) {
-                return this.field.value == true ? this.trueLabel : this.falseLabel
+                return this.value == true ? this.trueLabel : this.falseLabel
             }else {
                 return null;
             }
@@ -73,7 +82,7 @@ export default {
         },
 
         bgColor(){
-            return  'background-color:' + (this.field.value == true ? this.trueColor : this.falseColor) + ';'
+            return  'background-color:' + (this.value == true ? this.trueColor : this.falseColor) + ';'
         },
 
         colors(){
