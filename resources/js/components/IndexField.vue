@@ -64,7 +64,7 @@ export default {
 
         label() {
             if(! this.field.hide_label_on_index) {
-                return this.field.value == true ? this.trueLabel : this.falseLabel
+                return this.value == true ? this.trueLabel : this.falseLabel
             }else {
                 return null;
             }
@@ -79,7 +79,7 @@ export default {
         },
 
         bgColor(){
-            return  'background-color:' + (this.field.value == true ? this.trueColor : this.falseColor) + ';'
+            return  'background-color:' + (this.value == true ? this.trueColor : this.falseColor) + ';'
         },
 
         colors(){
