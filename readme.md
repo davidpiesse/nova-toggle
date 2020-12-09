@@ -68,3 +68,13 @@ Toggle::make('Active')
     ->speed(500)
 ```
 The default is 300ms
+
+
+### Toggle on index
+You can active the toggle on index as well with
+```php
+Toggle::make('Active')
+    ->editableIndex($this->resource->id)
+```
+
+As you can see, you need to provide the ID of the current row.

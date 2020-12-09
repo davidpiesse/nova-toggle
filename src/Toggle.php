@@ -7,7 +7,7 @@ use Laravel\Nova\Fields\Boolean;
 class Toggle extends Boolean
 {
     public $component = 'nova-toggle';
-    
+
     public function trueLabel($label){
         return $this->withMeta([
             'true_label' => $label,
@@ -47,9 +47,10 @@ class Toggle extends Boolean
         ]);
     }
 
-    public function editableIndex(){
+    public function editableIndex($id){
         return $this->withMeta([
             'editable_index' => true,
+            'editable_index_id' => $id
         ]);
     }
 
@@ -90,5 +91,5 @@ class Toggle extends Boolean
             'speed' => $ms,
         ]);
     }
-    
+
 }
