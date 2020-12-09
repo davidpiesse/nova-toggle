@@ -47,10 +47,9 @@ class Toggle extends Boolean
         ]);
     }
 
-    public function editableIndex($id){
+    public function editableIndex(){
         return $this->withMeta([
             'editable_index' => true,
-            'editable_index_id' => $id
         ]);
     }
 

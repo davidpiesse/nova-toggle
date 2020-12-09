@@ -71,10 +71,8 @@ The default is 300ms
 
 
 ### Toggle on index
-You can active the toggle on index as well with
+You can activate the toggle on index as well with
 ```php
 Toggle::make('Active')
-    ->editableIndex($this->resource->id)
+    ->editableIndex()
 ```
-
-As you can see, you need to provide the ID of the current row.

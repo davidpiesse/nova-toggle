@@ -40,7 +40,7 @@ export default {
             Nova.request().post('/nova-vendor/nova-toggle/toggle/' + this.resourceName, {
               value: this.value,
               fieldName: this.field.attribute,
-              resourceId: this.field.editable_index_id
+              resourceId: this.resourceId
             }).then((res) => {
               if(res.data.success)
                 this.$toasted.show(this.field.indexName + ' changed', {type: 'success'});
@@ -51,6 +51,9 @@ export default {
     },
 
     computed: {
+        resourceId() {
+          return this.$parent.resource.id.value;
+        },
         editableIndex(){
             return this.field.editable_index != undefined
         },
