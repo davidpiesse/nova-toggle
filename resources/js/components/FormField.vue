@@ -8,6 +8,7 @@
                     :value="value"
                     @change="toggle"
                     :labels="labelConfig"
+                    :dusk="sanitizedName"
                     :width="width"
                     :height="height"
                     :sync="true"
