@@ -61,8 +61,8 @@ export default {
 
         labelConfig(){
             return {
-                checked:  (this.field.show_true_label) ? this.trueLabel : null,
-                unchecked: (this.field.show_false_label) ? this.falseLabel : null,
+                checked:  (this.field.show_true_label) ? this.trueLabel : false,
+                unchecked: (this.field.show_false_label) ? this.falseLabel : false,
             }
         },
 
