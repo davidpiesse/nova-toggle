@@ -3,6 +3,7 @@
 namespace Davidpiesse\NovaToggle;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Nova;
 
 class ApiController
 {
@@ -14,6 +15,9 @@ class ApiController
         
         if($model) {
             $model->{$request->post('fieldName')} = $request->post('value');
+
+            Nova::actionEvent()->forResourceUpdate($request->user(), $model)->save();
+
             $model->save();
             
             return [
