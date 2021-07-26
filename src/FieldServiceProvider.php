@@ -19,7 +19,6 @@ class FieldServiceProvider extends ServiceProvider
     {
         Nova::serving(function (ServingNova $event) {
             Nova::script('nova-toggle', __DIR__.'/../dist/js/field.js');
-            Nova::style('nova-toggle', __DIR__.'/../dist/css/field.css');
         });
     
         $this->app->booted(function () {
