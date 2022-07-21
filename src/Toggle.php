@@ -2,93 +2,101 @@
 
 namespace Davidpiesse\NovaToggle;
 
-use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Field;
 
-class Toggle extends Boolean
+class Toggle extends Field
 {
+    /**
+     * The field's component.
+     *
+     * @var string
+     */
     public $component = 'nova-toggle';
 
-    public function trueLabel($label){
+    public function trueLabel($label)
+    {
         return $this->withMeta([
             'true_label' => $label,
         ]);
     }
 
-    public function falseLabel($label){
+    public function falseLabel($label)
+    {
         return $this->withMeta([
             'false_label' => $label,
         ]);
     }
 
-    public function showLabels(){
+    public function showLabels()
+    {
         return $this->withMeta([
             'show_true_label' => true,
             'show_false_label' => true,
         ]);
     }
 
-    public function showOnlyTrueLabel(){
+    public function showOnlyTrueLabel()
+    {
         return $this->withMeta([
             'show_true_label' => true,
             'show_false_label' => false,
         ]);
     }
 
-    public function showOnlyFalseLabel(){
+    public function showOnlyFalseLabel()
+    {
         return $this->withMeta([
             'show_true_label' => false,
             'show_false_label' => true,
         ]);
     }
 
-    public function hideLabelOnIndex(){
-        return $this->withMeta([
-            'hide_label_on_index' => true,
-        ]);
+    public function hideLabelOnIndex()
+    {
+        //! This has been deprecated (for now)
+        // return $this->withMeta([
+        //     'hide_label_on_index' => true,
+        // ]);
     }
 
-    public function editableIndex(){
-        return $this->withMeta([
-            'editable_index' => true,
-        ]);
+    public function editableIndex()
+    {
+        //! This has been deprecated (for now)
+        // return $this->withMeta([
+        //     'editable_index' => true,
+        // ]);
     }
 
-    public function width($width){
-        return $this->withMeta([
-            'width' => $width,
-            'height' => round($width/(60/26),0),
-        ]);
+    public function width($width)
+    {
+        //! This has been deprecated
     }
 
-    public function height($height){
-        return $this->withMeta([
-            'height' => $height,
-        ]);
+    public function height($height)
+    {
+        //! This has been deprecated
     }
 
-    public function trueColor($colour){
-        return $this->withMeta([
-            'true_color' => $colour,
-        ]);
+    public function trueColor($color)
+    {
+        //! This has been deprecated
+        // As we are now using Tailwind we cant inject colors at runtime
+        // return $this->withMeta([
+        //     'true_color' => $color,
+        // ]);
     }
 
-    public function falseColor($colour){
-        return $this->withMeta([
-            'false_color' => $colour,
-        ]);
+    public function falseColor($color)
+    {
+        //! This has been deprecated
+        // As we are now using Tailwind we cant inject colors at runtime
+        // return $this->withMeta([
+        //     'false_color' => $color,
+        // ]);
     }
 
-    //TODO
-    // public function textColor($colour){
-    //     return $this->withMeta([
-    //         'text_color' => $colour,
-    //     ]);
-    // }
-
-    public function speed($ms){
-        return $this->withMeta([
-            'speed' => $ms,
-        ]);
+    public function speed($ms)
+    {
+        //! This has been deprecated
     }
-
 }
