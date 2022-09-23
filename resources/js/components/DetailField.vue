@@ -1,31 +1,33 @@
 <template>
-    <panel-item :field="field">
-        <p slot="value" class="text-90">
-            <span
-                class="inline-block rounded-full w-4 h-4 mr-1"
-                :class="{'bg-success': field.value, 'bg-danger': !field.value}"
-            />
-            <span v-if="label != null">{{ label }}</span>
-        </p>
-    </panel-item>
+  <PanelItem :index="index" :field="field">
+    <template #value>
+      <Icon
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        :type="type"
+        :class="color"
+      />
+    </template>
+  </PanelItem>
 </template>
 
 <script>
 export default {
-    props: ['resource', 'resourceName', 'resourceId', 'field'],
+  props: ['index', 'resource', 'resourceName', 'resourceId', 'field'],
 
-    computed: {
-        trueLabel(){
-            return (this.field.true_label != undefined) ? this.field.true_label : null
-        },
-
-        falseLabel(){
-            return (this.field.false_label != undefined) ? this.field.false_label : null
-        },
-
-        label() {
-            return this.field.value == true ? this.trueLabel : this.falseLabel
-        },
+  computed: {
+    label() {
+      return this.field.value == true ? this.__('Yes') : this.__('No')
     },
+
+    type() {
+      return this.field.value == true ? 'check-circle' : 'x-circle'
+    },
+
+    color() {
+      return this.field.value == true ? 'text-green-500' : 'text-red-500'
+    },
+  },
 }
 </script>

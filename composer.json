@@ -1,13 +1,15 @@
 {
     "name": "davidpiesse/nova-toggle",
-    "description": "A Boolean Toggle Switch Field",
+    "description": "A Laravel Nova Toggle field.",
     "keywords": [
         "laravel",
-        "nova"
+        "nova",
+        "toggle",
+        "field"
     ],
     "license": "MIT",
     "require": {
-        "php": ">=7.1.0"
+        "php": "^7.3|^8.0"
     },
     "autoload": {
         "psr-4": {
