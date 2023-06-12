@@ -2,9 +2,9 @@
 
 namespace Davidpiesse\NovaToggle;
 
-use Laravel\Nova\Fields\Field;
+use Laravel\Nova\Fields\Boolean;
 
-class Toggle extends Field
+class Toggle extends Boolean
 {
     /**
      * The field's component.
